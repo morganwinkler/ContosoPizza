@@ -27,7 +27,13 @@ public class PizzaController : ControllerBase
     return pizza;
   }
 
-  // POST action
+  [HttpPost]
+  public IActionResult Create(Pizza pizza)
+  {
+    PizzaService.Add(pizza);
+    // The first parameter in the CreatedAtAction method call represents an action name. The nameof keyword is used to avoid hard-coding the action name. CreatedAtAction uses the action name to generate a location HTTP response header with a URL to the newly created pizza, as explained in the previous unit.
+    return CreatedAtAction(nameof(Get), new { id = pizza.Id }, pizza);
+  }
 
   // PUT action
 
