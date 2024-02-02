@@ -11,8 +11,10 @@ public class PizzaController : ControllerBase
   public PizzaController()
   {
   }
-
-  // GET all action
+  // Returns an ActionResult instance of type List<Pizza>. The ActionResult type is the base class for all action results in ASP.NET Core.
+  [HttpGet]
+  public ActionResult<List<Pizza>> GetAll() =>
+    PizzaService.GetAll();
 
   // GET by Id action
 
